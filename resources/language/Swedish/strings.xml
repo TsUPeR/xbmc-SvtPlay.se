@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+
+    <!-- Swedish -->
+
+<!-- Plugin settings strings -->
+    <string id="30001">Videokvalitet: </string>
+    <string id="30002">Videonedladdningskvalitet: </string>
+    <string id="30003">Videonedladdningsmapp: </string>
+    <string id="30100">HD 720p</string>
+    <string id="30101">Hög</string>
+    <string id="30102">Medium</string>
+    <string id="30103">Låg</string>
+    <!-- Plugin UI strings -->
+    <string id="30200">Program A-Ö</string>
+    <string id="30201">Kategorier</string>
+    <string id="30202">Sök...</string>
+    <string id="30203">Nästa sida...</string>
+    <string id="30204">Fel</string>
+    <string id="30205">Hittade inte det du sökte efter.</string>
+    <string id="30206">Sökströngen var tom.</string>
+    <string id="30207">Letar...</string>
+    <string id="30208">Hittade ingen videolänk.</string>
+    <string id="30209">Ladda ner</string>
+</strings>

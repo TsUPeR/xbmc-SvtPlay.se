@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Plugin settings strings -->
+    <string id="30001">Video quality: </string>
+    <string id="30002">Video download quality: </string>
+    <string id="30003">Video download path: </string>
+    <string id="30100">HD 720p</string>
+    <string id="30101">High</string>
+    <string id="30102">Mid</string>
+    <string id="30103">Low</string>
+        <!-- Plugin UI strings -->
+    <string id="30200">Programs A-Ö</string>
+    <string id="30201">Categories</string>
+    <string id="30202">Search...</string>
+    <string id="30203">Next page...</string>
+    <string id="30204">Error</string>
+    <string id="30205">I didn't find what you were looking for.</string>
+    <string id="30206">The search string was empty.</string>
+    <string id="30207">Searching...</string>
+</strings>
+
