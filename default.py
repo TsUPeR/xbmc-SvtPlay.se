@@ -153,7 +153,7 @@ def getEpisodes(url):
         for purl, info, image, comment, title in episodes:
             if purl[0:7] != "http://":
                 addListItem(title.strip(), baseurl + purl, "play", image, False)
-        
+                
         it = url[url.rindex('/') + 1:len(url)].split(',')
         current = int(it[2])
         #TODO: Add support for pagination, or?
@@ -246,10 +246,12 @@ def play(url,name):
             #Check if live stream (no .mp4 extension)
             if not ".mp4" in videolink[4][0]:
                 item.setProperty("IsLive", "true")
-            xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(videolink[4][0], item)
+            item.setPath(videolink[4][0])
+            xbmcplugin.setResolvedUrl(handle=int(sys.argv[1]), succeeded=True, listitem=item)
     else:
         print "VideolinkHD " + videolink[quality][0]
-        xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(videolink[quality][0], item)
+        item.setPath(videolink[quality][0])
+        xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
 
 def getPlayUrl(url, quality):
     #DEBUG videolink="rtmpe://fl11.c90909.cdn.qbrick.com/90909/_definst_/kluster/20110101/PG-1122415-006A-PLANETSKETCHS-01-mp4-d-v1.mp4"
@@ -278,6 +280,9 @@ def addListItem(name,url,mode,iconimage='',folder=True):
         durl = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=download" + "&name=" + urllib.quote_plus(name)
         cm.append(( __language__( 30209 ) , "XBMC.RunPlugin(%s)" % (durl)))
         li.addContextMenuItems( cm, replaceItems=False )
+    if (mode == "play"):
+        folder=False
+        li.setProperty("IsPlayable", "true")
     return xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=li, isFolder=folder)
 
 
