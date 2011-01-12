@@ -223,8 +223,8 @@ def getDownload(url):
         name = name.replace("/","-")
         name = name.replace(" ",".")
         name = name.replace(":",".")
+        name = name.replace("?","")
         command = __settings__.getSetting("downloadCommand") % (vurl, path, name)
-        xbmc.executebuiltin("System.Exec(" + command + ")")
         if (sys.platform == 'win32'):
             cmd = "System.Exec"
             xbmc.executebuiltin("%s(\\\"%s\\\")" % (cmd, command))
