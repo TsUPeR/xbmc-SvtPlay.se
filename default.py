@@ -161,7 +161,7 @@ def getEpisodes(url):
             it[2] = str(current + 1)
             addListItem( "N\xe4sta sida...", url[0:url.rindex('/') + 1] + ','.join(it), "episodes")
     else:
-        xbmcgui.Dialog().ok("Fel", "Hittade inget")
+        xbmcgui.Dialog().ok(__language__(30204), __language__(30205))
         getStartItems()
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
     return
@@ -208,20 +208,32 @@ def getDownload(url):
     if not videolink[dQuality]:
         if not videolink[4]:
             #Show Alert dialog
-            xbmcgui.Dialog().ok("Fel", "Hittade ingen videol\xe4nk ")
+            xbmcgui.Dialog().ok(__language__(30204), __language__(30208))
         else:
             if ".mp4" in videolink[4][0]:
                 vurl = videolink[4][0]
             else:
-                xbmcgui.Dialog().ok("Fel", "Hittade ingen videol\xe4nk ")
+                xbmcgui.Dialog().ok(__language__(30204), __language__(30208))
     else:
         vurl = videolink[dQuality][0]
     
     #Debug
     if vurl:
-        command = ("rtmpdump -r \"%s\" -o \"%s%s.mp4\"") % (vurl, path, name.replace(" ","."))
-        print "DEBUG __plugin__ rtmpdump:" + command
+        name = name.replace("\\", "-")
+        name = name.replace("/","-")
+        name = name.replace(" ",".")
+        name = name.replace(":",".")
+        command = __settings__.getSetting("downloadCommand") % (vurl, path, name)
         xbmc.executebuiltin("System.Exec(" + command + ")")
+        if (sys.platform == 'win32'):
+            cmd = "System.Exec"
+            xbmc.executebuiltin("%s(\\\"%s\\\")" % (cmd, command))
+        elif (sys.platform.startswith('linux')):
+            os.system("%s" % (command))
+        elif (sys.platform.startswith('darwin')):
+            os.system("\"%s\"" % (command))
+        else:
+            pass;
 
 #From old undertexter.se plugin    
 def unikeyboard(default, message):
@@ -275,7 +287,7 @@ def addListItem(name,url,mode,iconimage='',folder=True):
     li=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
     li.setInfo(type="Video", infoLabels={ "Title": name })
     #Download support
-    if (mode == "play") and ( __settings__.getSetting( "downloadPath" ) != ""):
+    if (mode == "play") and ( __settings__.getSetting( "downloadOk" )):
         cm = []
         durl = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=download" + "&name=" + urllib.quote_plus(name)
         cm.append(( __language__( 30209 ) , "XBMC.RunPlugin(%s)" % (durl)))

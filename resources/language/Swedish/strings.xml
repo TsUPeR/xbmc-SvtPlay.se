@@ -4,9 +4,11 @@
     <!-- Swedish -->
 
 <!-- Plugin settings strings -->
-    <string id="30001">Videokvalitet: </string>
-    <string id="30002">Videonedladdningskvalitet: </string>
-    <string id="30003">Videonedladdningsmapp: </string>
+    <string id="30000">Videokvalitet </string>
+    <string id="30001">Aktivera videonedladdning </string>
+    <string id="30002">Videonedladdningskvalitet </string>
+    <string id="30003">Videonedladdningsmapp </string>
+    <string id="30003">Videonedladdningskommando </string>
     <string id="30100">HD 720p</string>
     <string id="30101">Hög</string>
     <string id="30102">Medium</string>

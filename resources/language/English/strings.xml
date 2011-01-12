@@ -4,9 +4,11 @@
     <!-- Swedish -->
 
 <!-- Plugin settings strings -->
-    <string id="30001">Video quality: </string>
-    <string id="30002">Video download quality: </string>
-    <string id="30003">Video download path: </string>
+    <string id="30000">Video quality </string>
+    <string id="30001">Enable video download </string>
+    <string id="30002">Video download quality </string>
+    <string id="30003">Video download path </string>
+    <string id="30004">Video download script </string>
     <string id="30100">HD 720p</string>
     <string id="30101">High</string>
     <string id="30102">Mid</string>
